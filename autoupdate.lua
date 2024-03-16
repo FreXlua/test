@@ -30,7 +30,7 @@ function main()
         if status == dlstatus.STATUS_ENDDOWNLOADDATA then
             updateIni = inicfg.load(nil, update_path)
             if tonumber(updateIni.info.vers) > script_vers then
-                sampAddChatMessage('пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ! пїЅпїЅпїЅпїЅпїЅпїЅпїЅ /upd пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ', 0xff0000)
+                sampAddChatMessage('Есть обновление скрипта! Устанавливаем...', 0xff0000)
                 update_state = true
             end
             os.remove(update_path)
@@ -43,15 +43,11 @@ function main()
         if update_state then
             downloadUrlToFile(script_url, script_path, function(id, status)
                 if status == dlstatus.STATUS_ENDDOWNLOADDATA then
-                    sampAddChatMessage('пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!', 0xff0000)
+                    sampAddChatMessage('Обновление скачано!', 0xff0000)
                     thisScript():reload()
                 end
             end)
             break
         end
     end
-end
-
-function cmd_upd(arg)
-    sampShowDialog(1000, 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ', 'by FreX script', 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ', '', 0)
 end
